@@ -37,7 +37,7 @@ public class ServerResponse<T> implements Serializable {
         return this.status == ResponseCode.SUCCESS.getCode();//如果status是0 true
 
     }
-
+    //hk
     public int getStatus() {
         return status;
     }
