@@ -61,13 +61,13 @@ public class UserServiceImpl implements IUserService {
     public  ServerResponse<String> checkValid(String str,String type){
         if(org.apache.commons.lang3.StringUtils.isNoneBlank(str)){
             //开始检验
-            if(Const.USERNAME.equals(str)){
+            if(Const.USERNAME.equals(type)){
                 int resultCount = userMapper.checkUsername(str);
                 if(resultCount > 0){
                     return ServerResponse.createByErrorMessage("用户名已存在");
                 }
             }
-            if(Const.EMAIL.equals(str)){
+            if(Const.EMAIL.equals(type)){
                int resultCount = userMapper.checkEmail(str);
 
                 if(resultCount > 0){
