@@ -1,5 +1,6 @@
 package com.mmall.controller.portal;
 
+import com.mmall.common.Const;
 import com.mmall.common.ServerResponse;
 import com.mmall.dao.UserMapper;
 import com.mmall.pojo.User;
@@ -36,6 +37,21 @@ public class UserController {
             session.setAttribute("Const.CURRENT",response.getData());
         }
         return response;
+    }
+    @RequestMapping(value = "logout.do",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> logout(HttpSession session){
+        session.removeAttribute(Const.CURRENT_USER);
+        return ServerResponse.createBySuccess();
+    }
+    @RequestMapping(value = "register.do",method = RequestMethod.POST)
+    @ResponseBody
+    public  ServerResponse<String> register(User user){
+        return iUserService.register(user);
+    }
+    public  ServerResponse<String> checkValid(String str,String type)
+    {
+
     }
 
 }
