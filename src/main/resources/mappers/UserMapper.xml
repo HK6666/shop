@@ -151,6 +151,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+
   <select id="checkUsername" resultType="int" parameterType="string">
     select count(1) from mmall_user;
     where username = #{username}
@@ -168,5 +169,21 @@
     from mmall_user
     where username = #{username}
     add password = #{password}
+  </select>
+
+  <select id="selsectQuestionByUsername" resultType="string" parameterType="string">
+    select
+    question
+    from mmall_user
+    where username = #{username}
+  </select>
+
+  <select id="checkAnswer" resultType="int" parameterType="map">
+    select
+    count(1)
+    from mmall_user
+    where username  = #{username}
+    and question = #{question}
+    and answer = #{answer}
   </select>
 </mapper>

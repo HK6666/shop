@@ -49,9 +49,33 @@ public class UserController {
     public  ServerResponse<String> register(User user){
         return iUserService.register(user);
     }
-    public  ServerResponse<String> check_Valid.do(String str,String type)
+
+    @RequestMapping(value = "check_valid.do",method = RequestMethod.POST)
+    @ResponseBody
+    public  ServerResponse<String> checkValid(String str,String type)
     {
         return  iUserService.checkValid(str,type);
     }
+    @RequestMapping(value = "get_user_info.do",method = RequestMethod.POST)
+    @ResponseBody
+    public  ServerResponse<User> getUserInfo(HttpSession session){
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if(user != null){
+            return ServerResponse.createBySuccess(user);
+        }
+        return ServerResponse.createByErrorMessage("用户未登陆,无法获取当前用户的信息");
+    }
+    //提示问题与答案
+    @RequestMapping(value = "forget_get_question.do",method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> forgetGetQuestion(String username)
+    {
+        return iUserService.selectQuestion(username);
+    }
+
+    public ServerResponse<String> forgetCheckAnswer(String username,String question,String answer){
+
+    }
+
 
 }
