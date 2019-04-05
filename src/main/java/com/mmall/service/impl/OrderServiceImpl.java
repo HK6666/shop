@@ -54,9 +54,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-/**
- * Created by geely
- */
 @Service("iOrderService")
 public class OrderServiceImpl implements IOrderService {
 
@@ -532,7 +529,7 @@ public class OrderServiceImpl implements IOrderService {
         String tradeStatus = params.get("trade_status");
         Order order = orderMapper.selectByOrderNo(orderNo);
         if(order == null){
-            return ServerResponse.createByErrorMessage("非快乐慕商城的订单,回调忽略");
+            return ServerResponse.createByErrorMessage("非商城的订单,回调忽略");
         }
         if(order.getStatus() >= Const.OrderStatusEnum.PAID.getCode()){
             return ServerResponse.createBySuccess("支付宝重复调用");
