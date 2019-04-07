@@ -84,7 +84,7 @@ public class CartServiceImpl implements ICartService {
     }
     public ServerResponse<CartVo> selectOrUnselect(Integer userId,Integer productId,Integer cheked)
     {
-        cartMapper.checkOrUncheckedProduct(userId,null,cheked);
+        cartMapper.checkedOrUncheckedProduct(userId,null,cheked);
         return this.list(userId);
     }
 
@@ -156,7 +156,7 @@ public class CartServiceImpl implements ICartService {
         {
             return false;
         }
-        return cartMapper.selectCartProductCheckStatusByUserId(userId) == 0;
+        return cartMapper.selectCartProductCheckedStatusByUserId(userId) == 0;
     }
 
 

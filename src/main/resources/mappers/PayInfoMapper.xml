@@ -115,6 +115,7 @@
         update_time = now(),
       </if>
     </set>
+    //hk
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.mmall.pojo.PayInfo" >
