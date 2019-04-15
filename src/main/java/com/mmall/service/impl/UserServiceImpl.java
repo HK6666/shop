@@ -36,6 +36,7 @@ public class UserServiceImpl implements IUserService {
         {
             return ServerResponse.createByErrorMessage("密码错啦");
         }
+        user.setPassword(org.apache.commons.lang3.StringUtils.EMPTY);
            return ServerResponse.createBySuccess("登陆成功",user);
 
 
